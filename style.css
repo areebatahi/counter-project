@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+.color {
+    color: white;
+    text-align: center;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    background-image: url('https://img.freepik.com/free-photo/space-background-realistic-starry-night-cosmos-shining-stars-milky-way-stardust-color-galaxy_1258-154643.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1722729600&semt=sph');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+}

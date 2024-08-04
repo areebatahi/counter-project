@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>counter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        <h1 class="mt-5 mb-2">Counter</h1>
+        <div class="m-2 color" id="counter">
+            <b>0</b>
+        </div>
+        <div class="container mb-5">
+            <input type="button" value="Increase" onclick="increaseCounter()" class="btn btn-success m-1">
+            <input type="button" value="Decrease" onclick="decreaseCounter()" class="btn btn-danger m-1">
+            <input type="button" value="Restart" onclick="restartCounter()" class="btn btn-primary m-1">
+        </div>
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>
