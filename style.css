@@ -1,24 +1,164 @@
-.container {
-    display: flex;
-    justify-content: center;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rubik:wght@400;600&display=swap');
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glow-color: #0ff0fc;
+  --text-glow: #48fbe8;
+  --btn-blue: #2196f3;
+  --btn-cyan: #00e5ff;
+  --btn-pink: #ff4081;
+  --btn-green: #69f0ae;
+  --background-gradient: linear-gradient(135deg, #090e24, #101d3e, #0c223c);
 }
 
-h1 {
-    text-align: center;
-    color: white;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.color {
-    color: white;
-    text-align: center;
+body {
+  font-family: 'Rubik', sans-serif;
+  background: var(--background-gradient);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
+/* Main Glass Container */
 .main {
-    display: flex;
-    flex-direction: column;
-    align-content: space-around;
-    background-image: url('https://img.freepik.com/free-photo/space-background-realistic-starry-night-cosmos-shining-stars-milky-way-stardust-color-galaxy_1258-154643.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1722729600&semt=sph');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 400px;
+  position: relative;
+  width: 90%;
+  max-width: 420px;
+  padding: 50px 40px;
+  border-radius: 25px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.05), 0 0 30px rgba(0, 255, 255, 0.2);
+  text-align: center;
+  z-index: 1;
+  overflow: hidden;
 }
+
+.main::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #00f2fe, #4facfe, #00f2fe);
+  background-size: 400%;
+  animation: borderGlow 10s linear infinite;
+  z-index: -1;
+  filter: blur(30px);
+  border-radius: 25px;
+}
+
+@keyframes borderGlow {
+  0% { background-position: 0 0; }
+  100% { background-position: 400% 0; }
+}
+
+/* Title */
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.8rem;
+  margin-bottom: 30px;
+  color: var(--glow-color);
+  text-shadow: 0 0 15px var(--glow-color), 0 0 30px var(--glow-color);
+}
+
+/* Counter Display */
+#counter b {
+  font-size: 5rem;
+  color: #fff;
+  text-shadow: 0 0 25px var(--text-glow), 0 0 35px var(--text-glow);
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Button Container */
+.container {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* Button Styles */
+input[type="button"] {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 40px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  background-size: 200% 200%;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+input[value="Increase"] {
+  background: linear-gradient(45deg, var(--btn-blue), var(--btn-cyan));
+}
+
+input[value="Decrease"] {
+  background: linear-gradient(45deg, var(--btn-pink), #ff1744);
+}
+
+input[value="Restart"] {
+  background: linear-gradient(45deg, var(--btn-green), #00e676);
+}
+
+input[type="button"]::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+input[type="button"]:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+input[type="button"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .main {
+    padding: 30px 20px;
+  }
+
+  #counter b {
+    font-size: 3.5rem;
+  }
+
+  input[type="button"] {
+    width: 100%;
+    text-align: center;
+  }
+}
+   
